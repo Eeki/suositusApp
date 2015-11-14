@@ -12,15 +12,15 @@
 
 <template name="add">
 	<form class="new-like">
-  		<input type="text" name="like" placeholder="Tell me a movie you like!">
-  		<input type="submit">
+  		<input type="text" name="like" placeholder="Tell me a movie you like!" />
+  		<input type="submit" />
 	</form>
 </template>
 
 <template name="list">
-    <ul>
-  {{#each likes}}
+  <ul>
+    {{#each likes}}
       <li>{{title}}</li>
-  {{/each}}
-    </ul>
+    {{/each}}
+  </ul>
 </template>
