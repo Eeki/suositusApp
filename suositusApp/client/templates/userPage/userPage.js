@@ -1,25 +1,19 @@
-Meteor.subscribe('Likes');
-
-Template.body.events({
+Template.add.events({
     'submit .new-like': function (event) {
-
         event.preventDefault();
 
         var like = event.target.like.value;
-        console.log(like);
 
-        //Session.set('likes', Session.get('likes') + like);
-        Likes.insert({title: like});
-        console.log(Likes.find({}));
+        Meteor.call('saveLike', like);
 
+        event.target.like.value = ""
 
     }
 });
 
-Template.body.helpers({
+Template.list.helpers({
     likes: function () {
-        console.log(Likes.find({}) + "TEstit");
-        return Likes.find({});
+        console.log(Likes.find().fetch());
+        return Likes.find().fetch();
     }
 });
-
