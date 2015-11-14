@@ -1,3 +1,3 @@
 # suositusApp
 
-		Miikka kävi täällä taas!
+Miikka kävi täällä taas!

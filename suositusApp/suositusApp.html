@@ -3,12 +3,24 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
+  <h1>SuositusApp</h1>
 
-  {{> hello}}
+  {{> add}}
+  {{> list}}
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="add">
+  <input type="text" placeholder="Tell me a movie you like!"></input>
+  <submit>Add</submit>
+</template>
+
+<template name="list">
+  {{#each likes}}
+  	{{> movie}}
+  {{/each}}
+</template>
+
+<template name="movie">
+	<img src="{{movie.image}}" alt="{{movie.title}}"></img>
+	<p>{{movie.title}}</p>
 </template>
