@@ -16,7 +16,7 @@ Meteor.methods({
         Likes.insert({
             createdBy: Meteor.userId(),
             createdAt: new Date(),
-            title: "like"
+            title: like
         });
 
         //console.log("kayttaja: " +currentUserId+ " tallensi");
