@@ -7,6 +7,7 @@
 
   {{> add}}
   {{> list}}
+
 </body>
 
 <template name="add">
@@ -17,12 +18,9 @@
 </template>
 
 <template name="list">
+    <ul>
   {{#each likes}}
-  	{{> movie}}
+      <li>{{title}}</li>
   {{/each}}
-</template>
-
-<template name="movie">
-	<img src="{{movie.image}}" alt="{{movie.title}}">
-	<p>{{movie.title}}</p>
+    </ul>
 </template>
