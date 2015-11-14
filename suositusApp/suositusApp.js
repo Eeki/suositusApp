@@ -1,17 +1,25 @@
 if (Meteor.isClient) {
-  // counter starts at 0
-  Session.setDefault('counter', 0);
 
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get('counter');
+  Session.setDefault('likes', 
+    {"movie": {"title": "Terminator 3: Rise of the Machines", "image": "http://ia.media-imdb.com/images/M/MV5BMTk5NzM1ODgyN15BMl5BanBnXkFtZTcwMzA5MjAzMw@@._V1_SX300.jpg"}
+});
+
+  Template.body.helpers({
+    list: function () {
+      return Session.get('likes');
     }
   });
 
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set('counter', Session.get('counter') + 1);
+  Template.body.events({
+    'submit .new-like': function (event) {
+      
+      event.preventDefault();
+
+      var like = event.target.like.value;
+
+      Session.set('likes', Session.get('likes') + like);
+
+      event.target.text.value = "";
     }
   });
 }
