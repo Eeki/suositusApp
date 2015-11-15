@@ -24,8 +24,14 @@
 <template name="list">
   <ul>
     {{#each likes}}
-      <li>{{Title}}</li>
-      <input type="button" class="like-button" value="Like" />
+        <div class="movieCard">
+            {{#if containsImage}}
+            <img src="{{imgSrc}}">
+            {{/if}}
+
+            <li>{{title}} {{year}}</li>
+            <input type="button" class="like-button" value="Like" />
+        </div>
     {{/each}}
   </ul>
 </template>

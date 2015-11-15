@@ -18,7 +18,7 @@ Template.add.events({
             }
             else {
                 var movieContent = response.data;
-                console.log(movieContent);
+                //console.log(movieContent["imdbID"]);
 
                 //katso ettei leffaa ole jo tietokannassa movie id avulla
                 Movies.insert({
@@ -39,9 +39,9 @@ Template.add.events({
         //tänne pitää lisätä vielä systeemi ettei voi lisätä samaa leffa kahta kerta
         like = like.replace('+', ' ');
         //viitataan saveLike metodiin ja lähetetään sinne like muuttujan sisältämät arvo
-        console.log(movieId);
+        //console.log(movieId);
 
-        console.log(likeUrl);
+        //console.log(likeUrl);
 
         //buutataan text inputti takas tekstittömäksi
         event.target.like.value = "";
@@ -57,12 +57,14 @@ Template.list.events({
 
 Template.list.helpers({
     likes: function () {
-        console.log(Movies.find().fetch());
+        var juttu = Movies.find({});
+        console.log(juttu);
         return Movies.find();
     }
 });
 
 function saveLike (movieId) {
+
     Likes.insert({
         createdBy: Meteor.userId(),
         createdAt: new Date(),
@@ -70,3 +72,12 @@ function saveLike (movieId) {
     });
 }
 
+Template.list.helpers({
+    containsImage: function (imgSrc) {
+        if(imgSrc == "N/A") {
+            return false
+        } else {
+            return true
+        }
+    }
+});
