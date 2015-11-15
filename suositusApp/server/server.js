@@ -2,14 +2,10 @@
     var currentUserId = this.userId;
     return Likes.find();
 });*/
-Likes = new Mongo.Collection('likes');
-Meteor.startup(function () {
 
-
+Meteor.publish('likes', function(){
+    return Likes.find();
 });
 
-Meteor.methods({
-    'saveLike': function (like) {
-        Likes.insert({title: like});
-    }
+Meteor.startup(function () {
 });

@@ -3,6 +3,7 @@
 </head>
 
 <body>
+  {{> loginButtons}}
   <h1>SuositusApp</h1>
 
   {{> add}}
@@ -13,7 +14,7 @@
 <template name="add">
 	<form class="new-like">
   		<input type="text" name="like" placeholder="Tell me a movie you like!" />
-  		<input type="submit" />
+  		<input type="submit" value="Add" />
 	</form>
 </template>
 
@@ -21,6 +22,7 @@
   <ul>
     {{#each likes}}
       <li>{{title}}</li>
+      <input type="button" class="like-button" value="Like" />
     {{/each}}
   </ul>
 </template>

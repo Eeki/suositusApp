@@ -1,2 +1,1 @@
-Likes = new Mongo.Collection('likes');
-
+Meteor.subscribe('likes');
