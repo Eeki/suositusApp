@@ -37,7 +37,7 @@ Template.add.events({
         });
 
         //tänne pitää lisätä vielä systeemi ettei voi lisätä samaa leffa kahta kerta
-
+        like = like.replace('+', ' ');
         //viitataan saveLike metodiin ja lähetetään sinne like muuttujan sisältämät arvo
         console.log(movieId);
 
@@ -57,7 +57,8 @@ Template.list.events({
 
 Template.list.helpers({
     likes: function () {
-        return Likes.find({});
+        console.log(Movies.find().fetch());
+        return Movies.find();
     }
 });
 

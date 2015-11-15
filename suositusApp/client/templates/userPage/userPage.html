@@ -1,3 +1,4 @@
+<template name="userpage">
 <head>
   <title>suositusApp Eeki</title>
 </head>
@@ -11,6 +12,8 @@
 
 </body>
 
+</template>
+
 <template name="add">
 	<form class="new-like">
   		<input type="text" name="like" placeholder="Tell me a movie you like!" />
@@ -21,8 +24,10 @@
 <template name="list">
   <ul>
     {{#each likes}}
-      <li>{{title}}</li>
+      <li>{{Title}}</li>
       <input type="button" class="like-button" value="Like" />
     {{/each}}
   </ul>
 </template>
+
+
