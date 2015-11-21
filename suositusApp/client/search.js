@@ -9,8 +9,7 @@ Template.searchtemplate.events ({
                 console.log(error);
             }
             else {
-                var json = JSON.parse(result.content);
-                Session.set('jsonResults', json["title_popular"]);
+                Session.set('jsonResults', result);
             }
         });
 
