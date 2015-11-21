@@ -1,15 +1,23 @@
 <template name="resultstemplate">
     <div class="container-fluid">
-        <ul>
-            {{#each jsonResults}}
-                {{> itemtemplate}}
-            {{/each}}
-        </ul>
+        <div class="row">
+            <div class="col-md-8">
+                {{#each jsonResults}}
+                    {{> itemtemplate}}
+                {{/each}}
+            </div>
+        </div>
     </div>
 </template>
 
 <template name="itemtemplate">
-    <li>
-        {{Title}}, {{Year}}
-    </li>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{Title}}</h3>
+      </div>
+      <div class="panel-body">
+        <img src="{{Poster}}" width="75px" height="75px" >
+        <div>{{Plot}}</div>
+      </div>
+    </div>
 </template>
