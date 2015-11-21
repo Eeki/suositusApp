@@ -1,0 +1,31 @@
+<template name="topbartemplate">
+    <div class="container-fluid">
+        <header class="navbar navbar-default" role="navigation">
+
+            <div class="navbar-header">
+                <a class="navbar-brand">20best</a>
+            </div>
+
+            {{> searchtemplate}}
+            {{> logintemplate}}
+        </header>
+    </div>
+</template>
+
+<template name="searchtemplate">
+    <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+            <input name="text" type="text" class="form-control"
+                   placeholder="Search">
+        </div>
+        <input type="submit" class="btn btn-default" value="Submit">
+    </form>
+</template>
+
+<template name="logintemplate">
+    <div class="collapse navbar-collapse" id="navigation">
+        <ul class="nav navbar-nav navbar-right">
+            {{> loginButtons}}
+        </ul>
+    </div>
+</template>

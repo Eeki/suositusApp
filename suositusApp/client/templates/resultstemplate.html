@@ -1,0 +1,15 @@
+<template name="resultstemplate">
+    <div class="container-fluid">
+        <ul>
+            {{#each jsonResults}}
+                {{> itemtemplate}}
+            {{/each}}
+        </ul>
+    </div>
+</template>
+
+<template name="itemtemplate">
+    <li>
+        {{title}}
+    </li>
+</template>

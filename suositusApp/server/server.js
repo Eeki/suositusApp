@@ -1,25 +1,8 @@
-/*Meteor.publish('likes', function() {
-    var currentUserId = this.userId;
-    return Likes.find();
-});*/
-
-Meteor.publish('likes', function(){
-    return Likes.find();
-});
-
-Meteor.startup(function () {
-});
-
 Meteor.methods({
-    'saveLike': function (like) {
-
-        Likes.insert({
-            createdBy: Meteor.userId(),
-            createdAt: new Date(),
-            title: like
-        });
-
-        //console.log("kayttaja: " +currentUserId+ " tallensi");
-        //console.log('like: ' +JSON.stringify(Likes.find({_id: currentUserId}).title));
+    'getDataFromUrl': function (extension) {
+        var apiUrl = 'http://www.imdb.com/xml/find?json=1&nr=1&tt=on&q='
+            + extension;
+        var response = HTTP.get(apiUrl);
+        return response;
     }
 });
