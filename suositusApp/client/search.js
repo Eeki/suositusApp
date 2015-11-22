@@ -3,15 +3,27 @@ Template.searchtemplate.events ({
         event.preventDefault();
         var textInput = event.target.text.value;
 
-        Meteor.call('getDataFromUrl', textInput,
-        function(error, result) {
-            if (error) {
+        if (searchItems().count() === 0) {
+            getDataFromUrl();
+        } else {
+            searchItems();
+        }
+
+        function searchItems() {
+            Meteor.call('searchItems', textInput, setSessionResults);
+        } 
+
+        function getDataFromUrl() {
+            Meteor.call('getDataFromUrl', textInput, setSessionResults);
+        }
+
+        function setSessionResults(err, res) {
+            if (err) {
                 console.log(error);
-            }
-            else {
+            } else {
                 Session.set('jsonResults', result);
             }
-        });
+        }
 
         event.target.text.value = "";
     }
