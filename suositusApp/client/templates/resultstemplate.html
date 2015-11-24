@@ -1,23 +1,34 @@
 <template name="resultstemplate">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-8">
-                {{#each jsonResults}}
-                    {{> itemtemplate}}
-                {{/each}}
-            </div>
-        </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-8">
+      {{#each items}}
+        {{> itemtemplate}}
+      {{/each}}
     </div>
+  </div>
+</div>
 </template>
 
 <template name="itemtemplate">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">{{Title}}</h3>
-      </div>
-      <div class="panel-body">
-        <img src="{{Poster}}" width="75px" height="75px" >
-        <div>{{Plot}}</div>
-      </div>
+  <div class="panel panel-default" width="600px">
+    
+    <div class="panel-heading">
+      <h3 class="panel-title">{{Title}}</h3>
     </div>
+    
+    <div class="panel-body">
+
+      <div class="col-sm-4">
+        <img src="{{Poster}}" width="140px">
+      </div>
+
+      <div class="col-sm-8">
+        <p>{{Plot}}</p>
+        {{> liketemplate}}
+      </div>
+    
+    </div>
+
+  </div>
 </template>
