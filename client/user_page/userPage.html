@@ -1,0 +1,36 @@
+<template name="userPage">
+    <div class="container-fluid">
+        <span class="label label-default">{{thisUsername}}'s homepage</span>
+
+        {{#if noUserLikes}}
+            {{> noUserLikesText}}
+        {{/if}}
+        <div class="row">
+            <div class="col-md-8">
+                {{#each userLikes}}
+                    {{> userItem}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="userItem">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>{{title}}</h4>
+        </div>
+        {{> like}}
+    </div>
+</template>
+
+<template name="noUserLikesText">
+    <center>
+        <h2>
+            Doh, this user has no likes!
+            <br>
+            <small>Let's hope they like something soon.</small>
+        </h2>
+        <br>
+    </center>
+</template>

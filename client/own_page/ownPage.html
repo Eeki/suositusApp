@@ -1,0 +1,46 @@
+<template name="ownPage">
+    <div class="container-fluid">
+        {{#if noLikes}}
+            {{> noLikesText}}
+        {{/if}}
+        <div class="row">
+            <div class="col-md-8">
+                {{#each ownLikes}}
+                    {{> ownItem}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="ownItem">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>{{title}}</h4>
+        </div>
+        {{> deleteLike}}
+    </div>
+</template>
+
+<template name="deleteLike">
+    <div class="panel-body">
+        <button class="btn btn-danger pull-right">
+            <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+            Unlike
+        </button>
+    </div>
+</template>
+
+<template name="noLikesText">
+        <center>
+            <h2>
+                Uh oh, you have no likes yet!
+                <br>
+                <small>Search for movies and like them to get recommendations.</small>
+            </h2>
+            <br>
+            <button class="btn btn-success btn-lg">
+                Start the beginning quiz
+            </button>
+        </center>
+</template>

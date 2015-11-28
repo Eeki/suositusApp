@@ -1,0 +1,47 @@
+<template name="results">
+    <div class="container-fluid">
+        {{> notifications}}
+        <div class="row">
+            <div class="col-md-8">
+                {{#each jsonResults}}
+                    {{> item}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="item">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>{{title}}</h4>
+        </div>
+        {{> like}}
+    </div>
+</template>
+
+<template name="resultstemplate">
+    <div class="container-fluid">
+        <div class="row">
+            {{#each items}}
+                {{> itemtemplate}}
+            {{/each}}
+        </div>
+    </div>
+</template>
+
+<template name="itemtemplate">
+    <div class="col-sm-3">
+        <div class="thumbnail">
+            <img src="{{Poster}}" alt="{{Title}}" width="150px" height="150px">
+            <div class="caption">
+                <p>{{Title}}</p>
+                <p>{{> liketemplate}}</p>
+            </div>
+        </div>
+    </div>
+</template>
+
+
+
+
