@@ -11,7 +11,8 @@ Template.liketemplate.helpers({
 Template.liketemplate.events({
 	'click #like': function(event) {
     	event.preventDefault();
-        var res = Items.findOne(this._id);
-        console.log(res)
+        likeItem = Items.findOne(this._id);
+        console.log('Liked: ' + likeItem.Title);
+        Likes.insert(likeItem);
     }
 });

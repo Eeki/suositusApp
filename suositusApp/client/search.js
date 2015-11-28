@@ -5,12 +5,8 @@ Template.searchtemplate.events ({
         // text.value tulee topbar / search templatesta
         var searchInput = event.target.text.value;
         Session.set('searchInput', searchInput);
-        setApiDatatoDb(searchInput);
+        Meteor.call('setApiDatatoDb', searchInput);
         event.target.text.value = "";
     }
 });
-
-function setApiDatatoDb(searchInput) {
-    Meteor.call('setApiDatatoDb', searchInput);
-}
 
