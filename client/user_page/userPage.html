@@ -1,26 +1,21 @@
 <template name="userPage">
     <div class="container-fluid">
-        <span class="label label-default">{{thisUsername}}'s homepage</span>
-
-        {{#if noUserLikes}}
-            {{> noUserLikesText}}
-        {{/if}}
-        <div class="row">
-            <div class="col-md-8">
-                {{#each userLikes}}
-                    {{> userItem}}
-                {{/each}}
+        {{#if userExists}}
+            <span class="label label-default">{{thisUsername}}'s homepage</span>
+            <br><br>
+            {{#if noUserLikes}}
+                {{> noUserLikesText}}
+            {{/if}}
+            <div class="row">
+                <div class="col-md-8">
+                    {{#each userLikes}}
+                        {{> item}}
+                    {{/each}}
+                </div>
             </div>
-        </div>
-    </div>
-</template>
-
-<template name="userItem">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4>{{title}}</h4>
-        </div>
-        {{> like}}
+        {{else}}
+            {{> userDoesNotExistText}}
+        {{/if}}
     </div>
 </template>
 
@@ -30,6 +25,17 @@
             Doh, this user has no likes!
             <br>
             <small>Let's hope they like something soon.</small>
+        </h2>
+        <br>
+    </center>
+</template>
+
+<template name="userDoesNotExistText">
+    <center>
+        <h2>
+            Hmm, this user does not seem to exist...
+            <br>
+            <small>Maybe you forgot a detail off the name?</small>
         </h2>
         <br>
     </center>

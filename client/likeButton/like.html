@@ -1,8 +1,15 @@
 <template name="like">
     <div class="panel-body">
-        <button class="btn btn-info pull-right">
-            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-            Like
-        </button>
+        {{#if liked}}
+            <button class="btn btn-danger" id="unlike">
+                <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+                Unlike
+            </button>
+        {{else}}
+            <button class="btn btn-info" id="like" role="button">
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                Like
+            </button>
+        {{/if}}
     </div>
 </template>

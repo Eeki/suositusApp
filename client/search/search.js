@@ -3,10 +3,12 @@ Template.search.events ({
         event.preventDefault();
         var textInput = event.target.text.value;
         textInput = textInput.replace(' ', '+');
-        Router.go('results');
+
         Meteor.call('getDataFromUrl', textInput, setSessionResults);
 
         event.target.text.value = "";
+
+        Router.go('results');
     }
 });
 
@@ -15,6 +17,6 @@ function setSessionResults (error, result) {
         console.log(error);
     }
     else {
-        Session.set('jsonResults', result);
+        Session.set('titleResults', result);
     }
 }

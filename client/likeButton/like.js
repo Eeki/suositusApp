@@ -1,26 +1,35 @@
 Template.like.events ({
-    'click button': function (event) {
+    'click #like': function (event) {
         event.preventDefault();
         //can be replaced with this.id, this.index or anything
         //user has to be logged in for the like to register
-        checkCanUserLike(this.title);
+        checkCanUserLike(this.imdbID);
     }
 });
 
-function checkCanUserLike (thisTitle) {
-    if (likeAlreadyExists(thisTitle)) {
-        //dunno if the specific recommendations idea is good
-        Notifications.warn('You have already liked ' + thisTitle,
-            "You seem to be really into that movie. You can peer the specific recommendations " +
-            "for this film from its own page!");
+Template.like.events({
+    'click #unlike': function (event) {
+        event.preventDefault();
+        Meteor.call('removeLike', {userId: Meteor.userId(), imdbID: this.imdbID});
     }
-    else if(Meteor.userId() != null) {
+});
+
+Template.like.helpers({
+    liked: function(){
+        if(likeAlreadyExists(this.imdbID)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+});
+
+function checkCanUserLike (thisID) {
+    if(Meteor.userId() != null) {
         //maybe insert the username instead of userid?
         Meteor.call('insertLike',
-            {userId: Meteor.userId(), title: thisTitle});
-        //do we even want this notification?
-        Notifications.success("You just liked " + thisTitle + "!",
-            "Our robots will take that into account when hand picking content for you.");
+            {userId: Meteor.userId(), imdbID: thisID});
     }
     else {
         console.log("You need to be logged in to like!")
@@ -30,8 +39,8 @@ function checkCanUserLike (thisTitle) {
     }
 }
 
-function likeAlreadyExists (thisTitle) {
-    if(Likes.findOne({userId: Meteor.userId(), title: thisTitle})
+function likeAlreadyExists (thisID) {
+    if(Likes.findOne({userId: Meteor.userId(), imdbID: thisID})
         && Meteor.userId() != null) {
         return true;
     }

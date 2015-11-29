@@ -6,28 +6,10 @@
         <div class="row">
             <div class="col-md-8">
                 {{#each ownLikes}}
-                    {{> ownItem}}
+                    {{> item}}
                 {{/each}}
             </div>
         </div>
-    </div>
-</template>
-
-<template name="ownItem">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4>{{title}}</h4>
-        </div>
-        {{> deleteLike}}
-    </div>
-</template>
-
-<template name="deleteLike">
-    <div class="panel-body">
-        <button class="btn btn-danger pull-right">
-            <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
-            Unlike
-        </button>
     </div>
 </template>
 
